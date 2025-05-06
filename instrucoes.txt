@@ -1,0 +1,353 @@
+# Guia Completo para Gerenciar o Site UnboxBeauty
+
+Olá! Este guia foi criado para ajudar você a entender e gerenciar o site da UnboxBeauty, mesmo que não tenha experiência com programação. Vamos cobrir os principais pontos para que você possa fazer atualizações e manter tudo funcionando.
+
+## 1. Entendendo a Estrutura do Projeto
+
+O site da UnboxBeauty foi construído com HTML, CSS e JavaScript. Isso significa que ele é composto por arquivos de texto que o navegador lê para mostrar as páginas.
+
+A organização das pastas e arquivos é a seguinte:
+
+```
+/unboxbeauty_site/
+|-- index.html (Página Inicial)
+|-- loja.html (Página da Loja)
+|-- minha-box.html (Página do Quiz "Minha Box")
+|-- sobre.html (Página Sobre Nós)
+|-- faq.html (Página de Dúvidas Frequentes)
+|-- contato.html (Página de Contato)
+|-- blog.html (Página do Blog/Dicas)
+|-- painel.html (Página do Painel do Usuário - simulação)
+|-- instrucoes.txt (Este guia que você está lendo)
+|
+|-- /assets/
+    |-- /css/
+    |   |-- style.css (Arquivo principal de estilos visuais)
+    |
+    |-- /js/
+    |   |-- script.js (Scripts gerais do site, interações, painel)
+    |   |-- quiz.js (Lógica do quiz de personalização)
+    |   |-- gamificacao.js (Lógica do sistema de pontos e ranking)
+    |
+    |-- /img/
+    |   |-- /banners/ (Imagens de banners principais, como o da home)
+    |   |-- /produtos/ (Imagens dos produtos da loja, box do mês, boxes de influencers)
+    |   |-- /icones/ (Ícones usados no site, como redes sociais, favicon, etc.)
+    |
+    |-- /fonts/ (Pasta para fontes locais, se fossem usadas. Atualmente, usamos Google Fonts via link)
+```
+
+- **Arquivos `.html`**: São as páginas do site. Cada arquivo representa uma página diferente (Ex: `index.html` é a página inicial).
+- **Pasta `/assets/css/`**: Contém o arquivo `style.css`, que define toda a aparência do site (cores, fontes, tamanhos, layout).
+- **Pasta `/assets/js/`**: Contém os arquivos JavaScript (`.js`) que adicionam interatividade ao site, como o quiz, o sistema de pontos e animações.
+- **Pasta `/assets/img/`**: Onde todas as imagens do site estão guardadas, organizadas em subpastas.
+
+## 2. Como Alterar Textos, Imagens e Links
+
+Para fazer essas alterações, você precisará editar os arquivos `.html` usando um editor de texto simples (como Bloco de Notas no Windows, TextEdit no Mac, ou programas mais específicos como Notepad++, Sublime Text ou VS Code, que são gratuitos e facilitam a visualização do código).
+
+**Importante:** Sempre faça um backup (uma cópia de segurança) dos arquivos antes de fazer qualquer alteração!
+
+### 2.1. Alterando Textos
+
+1.  **Identifique a página:** Abra o arquivo `.html` da página que você quer editar (ex: `index.html` para a página inicial).
+2.  **Encontre o texto:** Use a função de busca do seu editor (geralmente Ctrl+F ou Cmd+F) para procurar pelo texto exato que você vê no site.
+3.  **Edite com cuidado:** O texto estará entre tags HTML, como `<p>Seu texto aqui</p>` ou `<h1>Título aqui</h1>`. Altere apenas o texto entre as tags, sem apagar as tags em si.
+    *   Exemplo: Para mudar o título `<h1>A Beleza que é a Sua Cara, Surpreenda-se!</h1>` para `<h1>Descubra Sua Beleza Única!</h1>`, você editaria assim:
+        ```html
+        <h1>Descubra Sua Beleza Única!</h1>
+        ```
+4.  **Salve o arquivo:** Após a alteração, salve o arquivo.
+5.  **Visualize:** Abra o arquivo `.html` no seu navegador para ver se a alteração funcionou como esperado.
+
+    Os arquivos HTML contêm comentários para ajudar a identificar seções, como `<!-- Seção: Banner Principal -->`. Isso facilita encontrar o que você precisa editar.
+
+### 2.2. Alterando Imagens
+
+As imagens são referenciadas nos arquivos `.html` pela tag `<img>` ou como imagem de fundo no CSS.
+
+**Método 1: Substituindo o arquivo da imagem (mais fácil)**
+
+1.  **Prepare sua nova imagem:**
+    *   Use o mesmo nome e formato (extensão, como `.jpg` ou `.png`) da imagem original que você quer substituir.
+    *   Tente manter as dimensões (largura e altura em pixels) da nova imagem próximas às da original para evitar quebras no layout. Você pode descobrir as dimensões da imagem original clicando com o botão direito sobre ela no site e inspecionando o elemento, ou abrindo o arquivo da imagem em um visualizador.
+    *   Otimize a imagem para a web antes de subir (veja a seção sobre otimização de imagens).
+2.  **Localize a imagem antiga:** No código HTML ou CSS, você verá comentários como `<!-- Para trocar esta imagem, substitua o arquivo img-banner-home.jpg dentro da pasta /assets/img/banners -->`.
+3.  **Substitua o arquivo:** Vá até a pasta indicada (ex: `/assets/img/banners/`) e substitua o arquivo de imagem antigo pelo seu novo arquivo (que deve ter o mesmo nome).
+
+**Método 2: Alterando o nome do arquivo no código (se a nova imagem tiver nome diferente)**
+
+1.  **Suba sua nova imagem:** Coloque sua nova imagem na pasta apropriada (ex: `/assets/img/banners/nova-imagem-banner.jpg`).
+2.  **Edite o HTML:** Abra o arquivo `.html` correspondente.
+3.  **Encontre a tag `<img>`:** Procure pela tag da imagem que você quer mudar. Ela terá um atributo `src` que indica o caminho da imagem.
+    *   Exemplo: `<img src="assets/img/banners/img-banner-home.jpg" alt="Descrição da imagem">`
+4.  **Altere o `src`:** Mude o valor do atributo `src` para o caminho da sua nova imagem.
+    *   Exemplo: `<img src="assets/img/banners/nova-imagem-banner.jpg" alt="Nova descrição da imagem">`
+5.  **Altere o `alt` (texto alternativo):** É importante atualizar o texto alternativo (`alt`) para descrever a nova imagem. Isso ajuda na acessibilidade e SEO.
+6.  **Salve e visualize.**
+
+    Para imagens de fundo definidas no CSS (`style.css`), o processo é similar. Você procuraria por `background-image: url(\'../img/banners/img-banner-home.jpg\');` e alteraria o caminho do arquivo.
+
+### 2.3. Alterando Links
+
+Links são geralmente definidos pela tag `<a>`.
+
+1.  **Edite o HTML:** Abra o arquivo `.html` da página onde o link está.
+2.  **Encontre a tag `<a>`:** Procure pelo texto do link que você vê no site.
+    *   Exemplo: `<a href="#link-antigo" class="btn">Clique Aqui</a>`
+3.  **Altere o `href`:** O atributo `href` define para onde o link aponta. Mude o valor de `href` para o novo destino.
+    *   Exemplo: `<a href="https://www.novodestino.com.br" class="btn">Clique Aqui</a>`
+    *   Para links internos (para outras páginas do seu site), use o nome do arquivo: `<a href="loja.html">Ver Loja</a>`
+4.  **Salve e visualize.**
+
+    Nos arquivos, há comentários como `<!-- Troque este link pelo link do produto da Tray -->` para indicar links que precisam ser atualizados com frequência.
+
+## 3. Como Substituir ou Adicionar Produtos (Links da Tray)
+
+A página "Loja" (`loja.html`) e a finalização do quiz em "Minha Box" (`minha-box.html`) contêm links que direcionam para produtos na plataforma Tray.
+
+### 3.1. Página Loja (`loja.html`)
+
+Os produtos na loja são exibidos como "cards". Cada card tem uma imagem, nome, descrição, preço (opcional, pois o preço final é na Tray) e um botão "Comprar".
+
+1.  **Abra `loja.html`** no seu editor de texto.
+2.  **Localize o card do produto:** Os cards são blocos de código HTML. Eles têm comentários para facilitar:
+    ```html
+    <!-- Início: Card de Produto Exemplo 1 -->
+    <!-- Para editar este produto, altere as informações abaixo e o link da Tray -->
+    <div class="product-card" data-category="makeup">
+        <!-- Para trocar esta imagem, substitua o arquivo img-produto-batom.jpg dentro da pasta /assets/img/produtos -->
+        <img src="assets/img/produtos/img-produto-batom.jpg" alt="Nome do Produto Exemplo 1">
+        <h3>Batom Matte Intenso</h3>
+        <p class="product-description">Cor vibrante, longa duração e acabamento aveludado para lábios poderosos.</p>
+        <p class="product-price">R$ 49,90</p>
+        <!-- Troque este link pelo link direto do produto na Tray -->
+        <a href="#link-tray-produto1" class="btn btn-secondary product-buy-button">Comprar</a>
+    </div>
+    <!-- Fim: Card de Produto Exemplo 1 -->
+    ```
+3.  **Para alterar um produto existente:**
+    *   **Imagem:** Siga as instruções da seção "Alterando Imagens". O comentário indica o nome do arquivo a ser substituído (ex: `img-produto-batom.jpg` na pasta `/assets/img/produtos/`).
+    *   **Nome:** Edite o texto dentro da tag `<h3>` (ex: `Batom Matte Intenso`).
+    *   **Descrição:** Edite o texto dentro da tag `<p class="product-description">`.
+    *   **Preço (opcional):** Edite o texto dentro da tag `<p class="product-price">`.
+    *   **Link do Botão "Comprar":** Altere o valor do atributo `href` na tag `<a>` (ex: `#link-tray-produto1`) para o link direto do produto na sua loja Tray.
+4.  **Para adicionar um novo produto:**
+    *   Copie um bloco de card de produto existente (desde `<!-- Início: Card de Produto Exemplo X -->` até `<!-- Fim: Card de Produto Exemplo X -->`).
+    *   Cole o bloco copiado abaixo do último produto, dentro da div `<div class="products-grid" id="tray-product-integration-placeholder">`.
+    *   Altere todas as informações do novo produto (imagem, nome, descrição, preço e o link da Tray) conforme o passo 3.
+    *   Certifique-se de que a nova imagem do produto esteja na pasta `/assets/img/produtos/`.
+5.  **Para remover um produto:**
+    *   Simplesmente delete o bloco de código HTML do card do produto que você deseja remover (desde `<!-- Início: Card de Produto Exemplo X -->` até `<!-- Fim: Card de Produto Exemplo X -->`).
+6.  **Salve `loja.html` e visualize.**
+
+### 3.2. Página Minha Box (`minha-box.html`) - Botão Final do Quiz
+
+Após o usuário completar o quiz, um botão "Quero Minha Box!" aparece.
+
+1.  **Abra `minha-box.html`**.
+2.  **Procure por:** `<!-- Troque este link pelo link do produto específico da Tray que representa a box personalizada padrão -->`
+3.  **Altere o `href`** do link logo abaixo deste comentário:
+    ```html
+    <a href="#link-tray-box-personalizada" class="btn btn-primary btn-large">Quero Minha Box!</a>
+    ```
+    Substitua `#link-tray-box-personalizada` pelo link do produto "Box Personalizada" na sua loja Tray.
+4.  **Salve e visualize.**
+
+### 3.3. Página Minha Box (`minha-box.html`) - Boxes de Influenciadoras
+
+Similar à loja, as boxes de influenciadoras são cards.
+
+1.  **Abra `minha-box.html`**.
+2.  **Localize a seção:** `<!-- Seção: Boxes de Influenciadoras -->`.
+3.  **Edite os cards:** Cada card de influenciadora tem uma estrutura como:
+    ```html
+    <div class="influencer-card">
+        <!-- Para trocar esta imagem, substitua o arquivo img-influencer-box-1.jpg dentro da pasta /assets/img/produtos -->
+        <img src="assets/img/produtos/img-influencer-box-1.jpg" alt="Box da Influenciadora Nome Dela">
+        <h3>Box da @NomeInfluencer1</h3>
+        <p>Uma seleção vibrante e cheia de brilho, perfeita para quem ama ousar.</p>
+        <!-- Troque este link pelo link do produto específico da box da influencer na Tray -->
+        <a href="#link-tray-influencer1" class="btn btn-secondary">Quero Igual!</a>
+    </div>
+    ```
+    Altere a imagem, nome da influencer, descrição e o link da Tray (`href`) conforme necessário.
+
+## 4. Como Publicar ou Subir o Site (FTP/CPanel - Genérico)
+
+Para que o site fique online, você precisa de um serviço de hospedagem e um domínio (ex: `www.unboxbeauty.com.br`). Se você já tem isso, geralmente o processo de publicação envolve enviar os arquivos do seu computador para o servidor de hospedagem.
+
+Os métodos mais comuns são via FTP (File Transfer Protocol) ou usando o Gerenciador de Arquivos do painel de controle da sua hospedagem (como cPanel).
+
+**Passos Gerais (podem variar dependendo da sua hospedagem):**
+
+1.  **Reúna seus arquivos:** Certifique-se de que toda a pasta `unboxbeauty_site/` com todos os seus arquivos e subpastas (`assets`, etc.) está pronta.
+2.  **Acesse seu servidor:**
+    *   **Via FTP:** Você precisará de um programa de FTP (como FileZilla, que é gratuito) e das credenciais de FTP fornecidas pela sua hospedagem (servidor FTP, nome de usuário, senha).
+    *   **Via Gerenciador de Arquivos (cPanel/Plesk):** Acesse o painel de controle da sua hospedagem e procure por "Gerenciador de Arquivos".
+3.  **Navegue até a pasta correta no servidor:** Geralmente, os arquivos do site principal devem ser colocados na pasta `public_html` ou `www` no servidor. Verifique com sua hospedagem qual é a pasta correta.
+4.  **Envie os arquivos:**
+    *   **FTP:** Arraste todos os arquivos e pastas de dentro da sua pasta `unboxbeauty_site/` (do seu computador) para a pasta correta no servidor (ex: `public_html`). Mantenha a estrutura de pastas.
+    *   **Gerenciador de Arquivos:** Use a opção "Upload" ou "Carregar" para enviar os arquivos. Se for enviar muitos arquivos, pode ser mais fácil compactar toda a pasta `unboxbeauty_site/` em um arquivo `.zip`, enviá-lo e depois usar a opção "Extrair" no Gerenciador de Arquivos do servidor.
+5.  **Verifique:** Após o envio, acesse o seu domínio no navegador para ver se o site está funcionando corretamente.
+
+**Importante:** Se você estiver atualizando o site, substitua os arquivos antigos pelos novos. Sempre faça backup antes de substituir!
+
+## 5. Como Inserir Scripts Externos (Google Analytics, Pixel do Facebook, etc.)
+
+Scripts de rastreamento são importantes para entender o tráfego do seu site e para campanhas de marketing.
+
+Eles geralmente são fornecidos pelas plataformas (Google, Meta/Facebook) e vêm em duas partes: uma para ser inserida na seção `<head>` do seu HTML e, às vezes, outra para ser inserida antes do fechamento da tag `</body>`.
+
+**Onde inserir:**
+
+Nos arquivos `.html` (index.html, loja.html, etc.), você encontrará comentários indicando os locais:
+
+1.  **Para a seção `<head>`:**
+    Procure por:
+    ```html
+    <!-- Comentário para scripts externos: Inserir aqui tags como Google Analytics, Meta Pixel (head) -->
+    </head>
+    ```
+    Cole o código do script fornecido pela plataforma ANTES da tag `</head>` e DEPOIS do comentário.
+
+2.  **Para antes de `</body>`:**
+    Procure por:
+    ```html
+    <!-- Comentário para scripts externos: Inserir aqui tags como Google Analytics, Meta Pixel (body) -->
+    <script src="assets/js/script.js" defer></script>
+    </body>
+    ```
+    Cole o código do script fornecido pela plataforma ANTES da tag `</body>` e DEPOIS do comentário (ou antes do `<script src="assets/js/script.js" defer></script>` se a instrução do provedor do script for colocá-lo o mais baixo possível no corpo da página).
+
+**Exemplo Genérico (NÃO USE ESTE CÓDIGO, PEGUE O SEU DAS PLATAFORMAS):**
+
+*   **No `<head>` (ex: Google Analytics):**
+    ```html
+    <!-- Comentário para scripts externos: Inserir aqui tags como Google Analytics, Meta Pixel (head) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=SUA_ID_AQUI"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'SUA_ID_AQUI');
+    </script>
+    </head>
+    ```
+
+*   **Antes de `</body>` (ex: Meta Pixel):**
+    ```html
+    <!-- Comentário para scripts externos: Inserir aqui tags como Google Analytics, Meta Pixel (body) -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'SEU_PIXEL_ID_AQUI');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"
+    /></noscript>
+    <script src="assets/js/script.js" defer></script>
+    </body>
+    ```
+
+**Importante:**
+*   Você precisará fazer isso em **TODOS os arquivos `.html`** onde você quer que o rastreamento funcione (geralmente todas as páginas).
+*   Substitua `SUA_ID_AQUI` ou `SEU_PIXEL_ID_AQUI` pelos códigos fornecidos pelas plataformas.
+
+## 6. Como Editar o Sistema de Pontuação, Quiz e Painel
+
+Essas funcionalidades são controladas pelos arquivos JavaScript na pasta `/assets/js/`:
+*   `quiz.js`: Lógica do quiz de personalização.
+*   `gamificacao.js`: Sistema de pontos e ranking (simulado).
+*   `script.js`: Funções gerais, incluindo a simulação do painel do usuário e login/logout.
+
+**Atenção:** Editar JavaScript requer mais cuidado, pois um erro de sintaxe pode quebrar a funcionalidade. Se não tiver familiaridade, peça ajuda ou faça pequenas alterações e teste exaustivamente.
+
+### 6.1. Editando o Quiz (`quiz.js`)
+
+O arquivo `quiz.js` contém as perguntas, opções e a lógica de como o quiz funciona.
+
+*   **Perguntas e Opções:** As perguntas e opções estão geralmente em estruturas de dados (como arrays de objetos) no início do arquivo ou em funções específicas. Você pode alterar o texto das perguntas e das opções diretamente nessas estruturas.
+    *   Exemplo (ilustrativo, a estrutura real pode variar):
+        ```javascript
+        // No arquivo quiz.js (exemplo simplificado)
+        const quizPerguntas = [
+            { pergunta: "Qual o seu tom de pele?", name: "tom-pele", opcoes: ["Claro", "Médio Claro", ...] },
+            // ... outras perguntas
+        ];
+        ```
+        Você pode editar o texto dentro das aspas.
+*   **Lógica de Pontuação/Recomendação (Simulada):** A lógica que define qual produto recomendar ou como os ícones aparecem na caixa é mais complexa. Pequenas alterações de texto são seguras, mas mudar a lógica requer conhecimento de JavaScript.
+*   **Ícones dos Produtos na Caixa:** Os ícones que aparecem na caixa sendo montada (`added-products-icons-container` no `minha-box.html`) são adicionados via JavaScript. Se você quiser mudar os ícones, precisará ter os novos arquivos SVG na pasta `/assets/img/icones/` e ajustar os nomes dos arquivos no `quiz.js` onde eles são referenciados.
+
+### 6.2. Editando o Sistema de Gamificação (`gamificacao.js`)
+
+Este arquivo controla a simulação de pontos e ranking.
+
+*   **Ações que Geram Pontos:** No código, haverá funções ou blocos que são chamados quando o usuário realiza certas ações (ex: `montarBox`, `escolherBoxInfluencer`). Dentro desses blocos, a pontuação é incrementada.
+    *   Exemplo (ilustrativo):
+        ```javascript
+        // function aoMontarBox() {
+        //     adicionarPontos(50); // Altere o valor 50 para a nova pontuação
+        // }
+        ```
+*   **Selos Visuais:** Os nomes dos selos ("Cliente Top", "VIP") podem estar definidos como texto no JavaScript. Você pode alterá-los.
+*   **Ranking (Simulado):** O ranking é provavelmente uma lista de nomes e pontuações de exemplo. Você pode alterar esses dados diretamente no arquivo `gamificacao.js` se eles estiverem definidos lá.
+
+### 6.3. Editando o Painel do Usuário e Login/Logout (`script.js` e `painel.html`)
+
+O login/logout e o painel do usuário são simulações usando `localStorage` (dados guardados no navegador do usuário).
+
+*   **Textos no Painel:** Os textos exibidos no `painel.html` (como "Histórico de Boxes", "Sua Pontuação") podem ser alterados diretamente no arquivo `painel.html`.
+*   **Lógica de Login/Logout:** Está no `script.js`. Alterar essa lógica requer conhecimento de JavaScript.
+*   **Dados do `localStorage`:** O histórico de boxes e pontuação são salvos no `localStorage`. O código em `script.js` e `gamificacao.js` manipula esses dados. Se você precisar limpar esses dados para teste, pode fazer isso através das ferramentas de desenvolvedor do navegador (geralmente clicando com o botão direito, "Inspecionar", e procurando pela aba "Application" ou "Armazenamento" e depois "LocalStorage").
+
+**Comentários nos arquivos JS:** Os arquivos JavaScript também contêm comentários para ajudar a entender o que cada parte do código faz. Procure por `// Este trecho faz X` ou `/* Bloco de código para Y */`.
+
+## 7. Otimização de Imagens (Importante!)
+
+Imagens grandes podem deixar o site lento. É crucial otimizar todas as imagens antes de colocá-las no site.
+
+**Como otimizar manualmente:**
+
+1.  **Escolha o formato correto:**
+    *   **JPEG (.jpg):** Melhor para fotografias e imagens com muitas cores e degradês. Você pode ajustar a qualidade para reduzir o tamanho (ex: 70-85% de qualidade costuma ser um bom equilíbrio).
+    *   **PNG (.png):** Melhor para logotipos, ícones, ilustrações com áreas de cor sólida e quando você precisa de fundo transparente. PNG-8 para menos cores, PNG-24 para mais cores e transparência.
+    *   **SVG (.svg):** Melhor para logotipos e ícones vetoriais. São escaláveis sem perder qualidade e geralmente leves. O site já usa SVGs para ícones.
+    *   **WebP (.webp):** Formato moderno que oferece boa compressão com alta qualidade, suportado pela maioria dos navegadores. Pode ser uma boa alternativa ao JPG e PNG.
+2.  **Redimensione para o tamanho necessário:** Não use uma imagem de 5000 pixels de largura se ela só vai aparecer com 800 pixels no site. Redimensione a imagem para as dimensões máximas que ela ocupará na tela usando um editor de imagens (Photoshop, GIMP (gratuito), ou ferramentas online).
+3.  **Comprima a imagem:** Após redimensionar, use ferramentas de compressão para reduzir o tamanho do arquivo sem perder muita qualidade visual.
+    *   **Ferramentas Online (gratuitas):** TinyPNG / TinyJPG, Compressor.io, Squoosh, iLoveIMG.
+    *   **Software:** Photoshop (Salvar para Web), GIMP, ImageOptim (Mac).
+
+**Exemplo de fluxo:**
+1.  Você tem uma foto de banner `meu-banner-grande.jpg` (5MB, 4000x2000 pixels).
+2.  No site, o banner ocupará no máximo 1920x800 pixels.
+3.  Redimensione a imagem para 1920x800 pixels.
+4.  Salve como JPG com qualidade 80%. O tamanho pode cair para 500KB.
+5.  Passe essa imagem de 500KB por uma ferramenta como TinyPNG. O tamanho pode cair para 250KB.
+6.  Use essa imagem final otimizada no site.
+
+**Nomes de Arquivos de Imagem:**
+*   Use nomes descritivos e em letras minúsculas.
+*   Separe palavras com hífens (ex: `banner-principal-home.jpg` em vez de `Banner Principal Home.jpg` ou `bannerprincipalhome.jpg`).
+*   Evite caracteres especiais e espaços.
+
+## 8. Considerações Finais
+
+*   **Teste sempre:** Após qualquer alteração, visualize a página em diferentes navegadores (Chrome, Firefox, Edge, Safari) e, se possível, em diferentes dispositivos (computador, celular, tablet) para garantir que tudo continua funcionando e com boa aparência.
+*   **Limpe o cache do navegador:** Às vezes, o navegador guarda versões antigas dos arquivos. Se você fez uma alteração e não está vendo, tente limpar o cache do navegador ou abrir em uma janela anônima.
+*   **Peça ajuda se precisar:** Se você não se sentir confortável fazendo alguma alteração mais complexa, especialmente no JavaScript ou CSS, é melhor procurar ajuda de alguém com experiência.
+
+Esperamos que este guia seja útil! Com um pouco de prática, você conseguirá gerenciar o conteúdo do site UnboxBeauty com confiança.
+
+Boa sorte!
+Equipe Manus
+

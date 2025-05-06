@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seu painel UnboxBeauty! Acompanhe seus pontos, selos, histórico de boxes e resgate recompensas.">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.unboxbeauty.com.br/painel.html"> <!-- Substituir pela URL final -->
+    <meta property="og:title" content="Painel do Cliente - UnboxBeauty">
+    <meta property="og:description" content="Gerencie sua conta UnboxBeauty, veja seu progresso e aproveite benefícios exclusivos.">
+    <meta property="og:image" content="https://www.unboxbeauty.com.br/assets/img/banners/og-image-painel.jpg"> <!-- Substituir pelo caminho da imagem OG -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.unboxbeauty.com.br/painel.html"> <!-- Substituir pela URL final -->
+    <meta property="twitter:title" content="Painel do Cliente - UnboxBeauty">
+    <meta property="twitter:description" content="Gerencie sua conta UnboxBeauty, veja seu progresso e aproveite benefícios exclusivos.">
+    <meta property="twitter:image" content="https://www.unboxbeauty.com.br/assets/img/banners/og-image-painel.jpg"> <!-- Substituir pelo caminho da imagem OG -->
+
+    <title>UnboxBeauty - Meu Painel</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/icones/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/img/icones/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/img/icones/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Comentário para scripts externos (head) -->
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="assets/img/icones/logo-unboxbeauty.svg" alt="UnboxBeauty Logo"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="loja.html">Loja</a></li>
+                    <li><a href="minha-box.html">Minha Box</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="painel.html" class="active">Painel</a></li> <!-- Link para o painel -->
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1 id="painel-title">Meu Painel UnboxBeauty</h1>
+                <p id="painel-subtitle">Bem-vinda de volta! Aqui você gerencia sua jornada de beleza.</p>
+            </div>
+        </section>
+
+        <!-- Seção de Login (Simulado) -->
+        <section id="login-section" class="login-section panel-section">
+            <div class="container">
+                <h2>Acesse seu Painel</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="user-email">E-mail:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-password">Senha:</label>
+                        <input type="password" id="user-password" name="user-password" placeholder="Sua senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <p class="form-note"><em>(Simulação: qualquer e-mail/senha funcionará para este exemplo)</em></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Conteúdo do Painel (Visível após Login) -->
+        <div id="panel-content-wrapper" class="hidden"> 
+            <!-- Seção de Boas-vindas e Resumo -->
+            <section id="welcome-section" class="panel-section">
+                <div class="container">
+                    <h2 id="user-welcome-message">Olá, [Nome do Usuário]!</h2>
+                    <div class="user-summary-grid">
+                        <div class="summary-card">
+                            <h3>Seus Pontos</h3>
+                            <p id="user-points-display" class="points-highlight">0 Pontos</p>
+                            <!-- Barra de progresso de pontos (opcional) -->
+                            <div class="progress-bar-container points-progress-container">
+                                <div id="user-points-progress-bar" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Seu Selo Atual</h3>
+                            <p id="user-seal-display" class="seal-highlight">Iniciante</p>
+                            <!-- Pode adicionar uma imagem do selo aqui -->
+                            <img src="assets/img/icones/seal-iniciante.svg" alt="Selo Iniciante" id="user-seal-image" class="seal-image-display">
+                        </div>
+                    </div>
+                    <button id="logout-button" class="btn btn-secondary">Sair (Logout)</button>
+                </div>
+            </section>
+
+            <!-- Seção: Histórico de Boxes Montadas -->
+            <section id="box-history-section" class="panel-section">
+                <div class="container">
+                    <h2>Seu Histórico de Boxes</h2>
+                    <div id="box-history-container">
+                        <!-- O histórico será preenchido pelo JavaScript -->
+                        <p><em>Você ainda não montou nenhuma box personalizada. Que tal <a href="minha-box.html">começar agora</a>?</em></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Ranking de Clientes (Gamificação) -->
+            <section id="ranking-section" class="panel-section">
+                <div class="container">
+                    <h2>Ranking UnboxLovers</h2>
+                    <div id="ranking-list-container">
+                        <!-- O ranking será preenchido pelo gamificacao.js -->
+                        <p><em>Carregando ranking...</em></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Resgate de Recompensas (Visual) -->
+            <section id="rewards-section" class="panel-section">
+                <div class="container">
+                    <h2>Resgate Suas Recompensas!</h2>
+                    <p>Use seus pontos para desbloquear mimos exclusivos. Quanto mais pontos, mais vantagens!</p>
+                    <div class="rewards-grid">
+                        <!-- Exemplo de Recompensa 1 -->
+                        <div class="reward-card" data-points-needed="200">
+                            <!-- Imagem da recompensa -->
+                            <img src="assets/img/icones/reward-frete.svg" alt="Frete Grátis">
+                            <h3>Frete Grátis</h3>
+                            <p class="reward-cost">200 Pontos</p>
+                            <button class="btn btn-tertiary redeem-reward-button" disabled>Resgatar</button>
+                        </div>
+                        <!-- Exemplo de Recompensa 2 -->
+                        <div class="reward-card" data-points-needed="500">
+                            <img src="assets/img/icones/reward-brinde.svg" alt="Brinde Surpresa">
+                            <h3>Brinde Surpresa Especial</h3>
+                            <p class="reward-cost">500 Pontos</p>
+                            <button class="btn btn-tertiary redeem-reward-button" disabled>Resgatar</button>
+                        </div>
+                        <!-- Exemplo de Recompensa 3 -->
+                        <div class="reward-card" data-points-needed="1000">
+                            <img src="assets/img/icones/reward-desconto.svg" alt="Desconto Exclusivo">
+                            <h3>15% OFF na Próxima Box</h3>
+                            <p class="reward-cost">1000 Pontos</p>
+                            <button class="btn btn-tertiary redeem-reward-button" disabled>Resgatar</button>
+                        </div>
+                        <!-- Adicionar mais recompensas visuais -->
+                    </div>
+                    <p class="form-note"><em>(Funcionalidade de resgate real será implementada futuramente. Por enquanto, é apenas visual.)</em></p>
+                </div>
+            </section>
+        </div> <!-- Fim do #panel-content-wrapper -->
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <!-- Conteúdo do rodapé igual às outras páginas -->
+            <div class="footer-columns">
+                <div class="footer-column about-us">
+                    <h4>UnboxBeauty</h4>
+                    <p>Transformando a compra de maquiagem em uma experiência personalizada e marcante.</p>
+                    <div class="social-icons">
+                        <a href="#" target="_blank" aria-label="Facebook"><img src="assets/img/icones/icon-facebook.svg" alt="Facebook"></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><img src="assets/img/icones/icon-instagram.svg" alt="Instagram"></a>
+                        <a href="#" target="_blank" aria-label="TikTok"><img src="assets/img/icones/icon-tiktok.svg" alt="TikTok"></a>
+                    </div>
+                </div>
+                <div class="footer-column links-uteis">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="minha-box.html">Monte Sua Box</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="faq.html">Dúvidas Frequentes</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h4>Fique por Dentro!</h4>
+                    <p>Receba novidades, dicas e promoções exclusivas no seu e-mail.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <button type="submit" class="btn btn-secondary">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 UnboxBeauty. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX</p>
+                <p>Desenvolvido com ❤️ por Manus</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/gamificacao.js" defer></script> <!-- Gamificação precisa ser carregada para o painel -->
+    <!-- <script src="assets/js/painel.js" defer></script> --> <!-- Se a lógica do painel for separada -->
+    <!-- Comentário para scripts externos (body) -->
+</body>
+</html>
+
